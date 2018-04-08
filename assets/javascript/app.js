@@ -30,3 +30,32 @@
     }
 
     allQuestions = [yearFounded, stanleyCups, willieOree, zdenoChara, bobbyOrr]
+
+    //Variables to keep score
+    var correctAnswer = 0
+    var incorrectAnswer = 0
+
+    //Variables to track time
+    var timeDisplay;
+    var timeLeft = 15;
+
+
+
+//======================== BEGINNING GAME ==========================//
+
+//Hides all but the button. No timer set.
+$(document).ready(function () {
+    $("#timer-display").hide();
+    $("#next").hide();
+    $("#get-score").hide();
+    $("#time-left-display").hide();
+    $("#questions-form").hide();
+    $("#year-founded-answers").hide();
+    $("#stanley-cups-answers").hide();
+    $("willie-oree-answers").hide();
+    $("#zdeno-chara-answers").hide();
+    $("#bobby-orr-answers").hide();
+    $("#final-score").hide()
+})
+
+//When start button is clicked...
