@@ -1,0 +1,11 @@
+-Write out and store five questions and answers
+    -Write them into a form
+-Make a button to start game. Hide this once the game has begun.
+-Write timer function for each question to be 15 seconds
+    -If user picks correct answer, stop timer, celebrate, add to "Correct" score, go on to next question
+    -If user picks no answer by the end of 15 questions, display correct answer, say "no score," add to "Incorrect" score, go on to next question
+    -If user picks incorrect answer, allow timer to keep running. If answer is incorrect at end of 15 seconds, display correct answer, say "wrong answer", add to "Incorrect score", go on to next question
+-Write function to hide questions 2-5/final score while question 1 is being answered, so on and so forth.
+-Write out a final score page
+    -They win if there are more correct than incorrect answers. Display "you won!"
+    -They lose if there are more incorrect than correct answers. "Display "you lose!"
