@@ -39,6 +39,16 @@
     var timeDisplay;
     var timeLeft = 15;
 
+    //Timer functions
+    setTimeout(allowedTime, 1000 * 15);
+
+    function allowedTime () {
+        $("#time-left-display").text(timeLeft);
+    }
+
+    //Try writing out function to loop through allQuestions variables to alternate which question is displayed in the questions forms div
+
+
 
 
 //======================== BEGINNING GAME ==========================//
@@ -58,4 +68,10 @@ $(document).ready(function () {
     $("#final-score").hide()
 })
 
-//When start button is clicked...
+//When start button is clicked..
+$("#start-game").on("click", function () {
+    $("#start-game").hide();
+    $("#questions-form").show();
+    $("#question-goes-here").text(yearFounded[question]);
+    $("#willie-oree-answers").hide();
+})
