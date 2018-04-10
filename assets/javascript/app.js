@@ -44,7 +44,7 @@
 
     function allowedTime () {
         $("#time-left-display").text(timeLeft);
-    }
+    } 
 
     //Try writing out function to loop through allQuestions variables to alternate which question is displayed in the questions forms div
 
@@ -72,6 +72,6 @@ $(document).ready(function () {
 $("#start-game").on("click", function () {
     $("#start-game").hide();
     $("#questions-form").show();
-    $("#question-goes-here").text(yearFounded[question]);
-    $("#willie-oree-answers").hide();
+    $("#question-goes-here").html(allQuestions[0].question);
+    $(".answerChoices").html(allQuestions[0].answerChoices);
 })
