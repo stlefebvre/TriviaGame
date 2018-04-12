@@ -24,7 +24,7 @@
     }
 
     var bobbyOrr = {
-        question = "It goes without saying that Bruins legend Bobby Orr was the greatest player of all time. Among his many records, he still holds the all-time record for Plus-Minus by a single player in one single season. What was his Plus-Minus?",
+        question: "It goes without saying that Bruins legend Bobby Orr was the greatest player of all time. Among his many records, he still holds the all-time record for Plus-Minus by a single player in one single season. What was his Plus-Minus?",
         answerChoices: ["+129", "+120", "+126", "+124"],
         correctAnswer: "4"
     }
@@ -36,15 +36,26 @@
     var incorrectAnswer = 0
 
     //Variables to track time
-    var timeDisplay;
-    var timeLeft = 15;
+    var allowedTime = 15
+    var intervalID
 
-    //Timer functions
-    setTimeout(allowedTime, 1000 * 15);
+    //Function for start time countdown
+    function run () {
+        clearInterval(intervalID);
+        intervalID = setInterval(decrement, 1000);
+    }
 
-    function allowedTime () {
-        $("#time-left-display").text(timeLeft);
-    } 
+    //Function to start timer countown upon button click
+    function decrement() {
+        //decrease allowed time number by 1
+        allowedTime--;
+        $("#time-left-display").html(allowedTime);
+        //if number hits zero...
+        if (allowedTime === 0) {
+            stop() //write the stop function
+            alert("Time's Up")
+        }
+    }
 
     //Try writing out function to loop through allQuestions variables to alternate which question is displayed in the questions forms div
 
@@ -66,12 +77,20 @@ $(document).ready(function () {
     $("#zdeno-chara-answers").hide();
     $("#bobby-orr-answers").hide();
     $("#final-score").hide()
-})
+});
 
 //When start button is clicked..
 $("#start-game").on("click", function () {
+    // setTimeout(allowedTime, 1000 * 15);
+    //log this to a variable so they can stop if they pick an answer
+    run ();
+    $("#time-left-display").show();
+    $("#next").show()
     $("#start-game").hide();
     $("#questions-form").show();
     $("#question-goes-here").html(allQuestions[0].question);
-    $(".answerChoices").html(allQuestions[0].answerChoices); 
+    $("#answer1").html(allQuestions[0].answerChoices[0]); 
+    $("#answer2").html(allQuestions[0].answerChoices[1]);
+    $("#answer3").html(allQuestions[0].answerChoices[2]);
+    $("#answer4").html(allQuestions[0].answerChoices[3]);
 })
