@@ -43,6 +43,7 @@
     var buttons = document.getElementById('buttons').value;
 
     //Function for start time countdown
+    
     function run () {
         clearInterval(intervalID);
         intervalID = setInterval(decrement, 1000);
@@ -55,10 +56,15 @@
         $("#time-left-display").html(allowedTime);
         //if number hits zero...
         if (allowedTime === 0) {
-            stop() //write the stop function
-            alert("Time's Up")
+            stop();
+            alert("Time's Up!")
         }
     }
+
+    function stop() {
+        clearInterval(intervalID);
+    }
+    
 
     //Try writing out function to loop through allQuestions variables to alternate which question is displayed in the questions forms div
 
@@ -84,9 +90,8 @@ $(document).ready(function () {
 
 //When start button is clicked..
 $("#start-game").on("click", function () {
-    // setTimeout(allowedTime, 1000 * 15);
-    //log this to a variable so they can stop if they pick an answer
     run ();
+    decrement ()
     $("#time-left-display").show();
     $(".next").hide()
     $("#next2").show()
