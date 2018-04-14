@@ -39,6 +39,9 @@
     var allowedTime = 15
     var intervalID
 
+    //Variable to capture which answer button is selected
+    var buttons = document.getElementById('buttons').value;
+
     //Function for start time countdown
     function run () {
         clearInterval(intervalID);
@@ -67,7 +70,7 @@
 //Hides all but the button. No timer set.
 $(document).ready(function () {
     $("#timer-display").hide();
-    $("#next").hide();
+    $(".next").hide();
     $("#get-score").hide();
     $("#time-left-display").hide();
     $("#questions-form").hide();
@@ -85,7 +88,8 @@ $("#start-game").on("click", function () {
     //log this to a variable so they can stop if they pick an answer
     run ();
     $("#time-left-display").show();
-    $("#next").show()
+    $(".next").hide()
+    $("#next2").show()
     $("#start-game").hide();
     $("#questions-form").show();
     $("#question-goes-here").html(allQuestions[0].question);
@@ -93,4 +97,14 @@ $("#start-game").on("click", function () {
     $("#answer2").html(allQuestions[0].answerChoices[1]);
     $("#answer3").html(allQuestions[0].answerChoices[2]);
     $("#answer4").html(allQuestions[0].answerChoices[3]);
+    /* if (allowedTime === 0 && (no answers checked)) {
+        run stop function;
+        $("#year-founded-timesup").show();
+        (add to incorrect score);
+    }*/
+    if (document.getElementById('answer2').checked) {
+        //run stop function;
+        $("#year-founded-correct").show()
+    }
+
 })
