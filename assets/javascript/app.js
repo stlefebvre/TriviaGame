@@ -117,18 +117,53 @@ $(document).ready(function () {
                         $("#year-founded-correct").show();
                         $("#year-founded-incorrect").hide();
                         $("#year-founded-timesup").hide()
+                    /* commented out broken code, meant to display the next question
+                        $("#year-founded-answers").delay(1000 * 10).hide()
+                        $("#question-goes-here").delay(1000 * 10).html(allQuestions[1].question);
+                        $("#answer1").delay(1000 * 5).html(allQuestions[1].answerChoices[0]); 
+                        $("#answer2").delay(1000 * 5).html(allQuestions[1].answerChoices[1]);
+                        $("#answer3").delay(1000 * 5).html(allQuestions[1].answerChoices[2]);
+                        $("#answer4").delay(1000 * 5).html(allQuestions[1].answerChoices[3]); 
+                    */
                     } else if (userAnswer !== allQuestions[0].correctAnswer && allowedTime >= 0) {
                         stop();
                         console.log("Incorrect");
                         incorrectAnswer++
                         console.log("Current Score: " + userScore);
                         console.log("Incorrect Answers: " + incorrectAnswer)
-                        $("#year-founded-answers").show();
-                        $("#year-founded-correct").hide();
-                        $("#year-founded-incorrect").show();
-                        $("#year-founded-timesup").hide();
-                    }
+                        $("#year-founded-answers").show()
+                        $("#year-founded-correct").hide()
+                        $("#year-founded-incorrect").show()
+                        $("#year-founded-timesup").hide()
+                    /* commented out broken code, meant to display the next question
+                        $("#year-founded-answers").delay(1000 * 10).hide()
+                        $("#question-goes-here").delay(1000 * 10).html(allQuestions[1].question);
+                        $("#answer1").delay(1000 * 5).html(allQuestions[1].answerChoices[0]); 
+                        $("#answer2").delay(1000 * 5).html(allQuestions[1].answerChoices[1]);
+                        $("#answer3").delay(1000 * 5).html(allQuestions[1].answerChoices[2]);
+                        $("#answer4").delay(1000 * 5).html(allQuestions[1].answerChoices[3]);
+                    */
+                    } 
+                    /*commented out broken code, meant to capture if no answer is selected before time runs out
+                        else if (userAnswer === "" && allowedTime >= 0) {
+                        stop();
+                        console.log("Incorrect");
+                        incorrectAnswer++
+                        console.log("Current Score: " + userScore);
+                        console.log("Incorrect Answers: " + incorrectAnswer)
+                        $("#year-founded-answers").show()
+                        $("#year-founded-correct").hide()
+                        $("#year-founded-incorrect").hide()
+                        $("#year-founded-timesup").show()
+                        $("#year-founded-answers").delay(1000 * 10).hide()
+                        $("#question-goes-here").delay(1000 * 10).html(allQuestions[1].question);
+                        $("#answer1").delay(1000 * 5).html(allQuestions[1].answerChoices[0]); 
+                        $("#answer2").delay(1000 * 5).html(allQuestions[1].answerChoices[1]);
+                        $("#answer3").delay(1000 * 5).html(allQuestions[1].answerChoices[2]);
+                        $("#answer4").delay(1000 * 5).html(allQuestions[1].answerChoices[3]);
+                    */
         });
 })
+
 
 /* I tried using the .delay jQuery command to delay changing the answers in the #form-id, #questions-form, and #question-goes-here div, but it still doesn't delay long enough to show the correct/incorrect/timesup answer. I'm considering writing out five individual divs in the HTML side for each answer to make it easier (since I only have one div and I'm trying to swap answers out), or stepping down to the easier assignment since I think I have a really good grasp on how that one works*/
