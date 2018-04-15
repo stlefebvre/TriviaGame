@@ -1,3 +1,4 @@
+$(document).ready(function () {
 //Questions
     var yearFounded = {
         question: "What year were the Boston Bruins founded?",
@@ -32,17 +33,16 @@
     var allQuestions = [yearFounded, stanleyCups, willieOree, zdenoChara, bobbyOrr]
 
     //Variables to keep score
-    var correctAnswer = 0
+    var userScore = 0
     var incorrectAnswer = 0
 
-    //Variables to track time
+    //Variables for timer
     var allowedTime = 15
     var intervalID
+    //Variable to determine if timer is running. Needed to allow timer to stop upon submitting an answer
+    var timerRunning = false
 
-    //Variable to capture which answer button is selected
-    var buttons = document.getElementById('buttons').value;
-
-    //Function for start time countdown
+    //Functions for running/stopping timer
     
     function run () {
         clearInterval(intervalID);
@@ -51,6 +51,7 @@
 
     //Function to start timer countown upon button click
     function decrement() {
+        timerRunning = true;
         //decrease allowed time number by 1
         allowedTime--;
         $("#time-left-display").html(allowedTime);
@@ -63,6 +64,7 @@
 
     function stop() {
         clearInterval(intervalID);
+        timerRunning = false;
     }
     
 
@@ -74,7 +76,6 @@
 //======================== BEGINNING GAME ==========================//
 
 //Hides all but the button. No timer set.
-$(document).ready(function () {
     $("#timer-display").hide();
     $(".next").hide();
     $("#get-score").hide();
@@ -86,30 +87,47 @@ $(document).ready(function () {
     $("#zdeno-chara-answers").hide();
     $("#bobby-orr-answers").hide();
     $("#final-score").hide()
-});
 
-//When start button is clicked..
-$("#start-game").on("click", function () {
-    run ();
-    decrement ()
-    $("#time-left-display").show();
-    $(".next").hide()
-    $("#next2").show()
-    $("#start-game").hide();
-    $("#questions-form").show();
-    $("#question-goes-here").html(allQuestions[0].question);
-    $("#answer1").html(allQuestions[0].answerChoices[0]); 
-    $("#answer2").html(allQuestions[0].answerChoices[1]);
-    $("#answer3").html(allQuestions[0].answerChoices[2]);
-    $("#answer4").html(allQuestions[0].answerChoices[3]);
-    /* if (allowedTime === 0 && (no answers checked)) {
-        run stop function;
-        $("#year-founded-timesup").show();
-        (add to incorrect score);
-    }*/
-    if (document.getElementById('answer2').checked) {
-        //run stop function;
-        $("#year-founded-correct").show()
-    }
+    //When start button is clicked..
+    $("#start-game").on("click", function () {
+        run ();
+        decrement ()
+        $("#time-left-display").show();
+        $(".next").hide()
+        $("#submit").show()
+        $("#start-game").hide();
+        $("#questions-form").show();
+        $("#question-goes-here").html(allQuestions[0].question);
+        $("#answer1").html(allQuestions[0].answerChoices[0]); 
+        $("#answer2").html(allQuestions[0].answerChoices[1]);
+        $("#answer3").html(allQuestions[0].answerChoices[2]);
+        $("#answer4").html(allQuestions[0].answerChoices[3]);
+    });
 
+    //When an answer is selected
+        $('#form-id input').on('change', function () {
+            $("#submit").on("click", function () {
+            var userAnswer = ($("input[name=answerChoices]:checked", "#form-id").val());
+            console.log(userAnswer);
+                if (userAnswer === allQuestions[0].correctAnswer && allowedTime >= 0) {
+                    stop();
+                    console.log("correct");
+                    userScore++;
+                    console.log("Current Score: " + userScore);
+                    $("#year-founded-answers").show();
+                    $("#year-founded-correct").show();
+                    $("#year-founded-incorrect").hide();
+                    $("#year-founded-timesup").hide()
+                } else if (userAnswer !== allQuestions[0].correctAnswer && allowedTime >= 0) {
+                    stop();
+                    console.log("Incorrect");
+                    incorrectAnswer++
+                    console.log("Current Score: " + userScore);
+                    console.log("Incorrect Answers: " + incorrectAnswer)
+                    $("#year-founded-answers").show()
+                    $("#year-founded-correct").hide()
+                    $("#year-founded-incorrect").show()
+                    $("#year-founded-timesup").hide()
+                }
+    })});
 })
