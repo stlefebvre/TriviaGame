@@ -99,7 +99,7 @@ $(document).ready(function () {
                     run();
                     decrement();
                 }
-            }, 1000 * 17) 
+            }, 1000 * 19) 
         }
 
         function renderThirdQuestion () {
@@ -135,7 +135,7 @@ $(document).ready(function () {
                     run();
                     decrement();
                 }
-            }, 1000 * 17) 
+            }, 1000 * 19) 
         }
 
         function renderFourthQuestion() {
@@ -171,7 +171,7 @@ $(document).ready(function () {
                     run();
                     decrement();
                 }
-            }, 1000 * 17) 
+            }, 1000 * 19) 
         }
 
         function renderFifthQuestion() {
@@ -179,6 +179,36 @@ $(document).ready(function () {
             $("#answer2q5").html(allQuestions[4].answerChoices[1]);
             $("#answer3q5").html(allQuestions[4].answerChoices[2]);
             $("#answer4q5").html(allQuestions[4].answerChoices[3]);
+            setTimeout(function () {
+                if (!($("#form-id5 input").is(':checked')) && allowedTime === 0) {
+                    stop();
+                    console.log("Incorrect");
+                    incorrectAnswer++
+                    console.log("Current Score: " + userScore);
+                    console.log("Incorrect Answers: " + incorrectAnswer)
+                    $("#bobby-orr-answers").show()
+                    $("#bobby-orr-correct").hide()
+                    $("#bobby-orr-incorrect").hide()
+                    $("#bobby-orr-timesup").show();
+                }
+            }, 1000 * 15.5);
+            setTimeout(function () {
+                if (!($("#form-id4 input").is(':checked')) && allowedTime === 0) {
+                    $("#bobby-orr-answers").hide();
+                    $("#question-goes-here").hide();
+                    $("#buttons").hide();
+                    $("#time-left-display").hide()
+                    $(".answerChoices5").hide()
+                    renderFinalScore();
+                    stop();
+                    $("#final-score").show()
+                }
+            }, 1000 * 19);
+        } 
+
+        function renderFinalScore () {
+           $("#correct-answers").text("Correct Answers: " + userScore) 
+           $("#incorrect-answers").text("Incorrect Answsers: " + incorrectAnswer)
         }
         
 //======================== BEGINNING GAME ==========================//
@@ -244,7 +274,7 @@ $(document).ready(function () {
                     run();
                     decrement();                   
                 }
-            }, 1000 * 18)
+            }, 1000 * 19)
         });
     
 
@@ -460,7 +490,7 @@ $(document).ready(function () {
                 $("#zdeno-chara-incorrect").show()
                 $("#zdeno-chara-timesup").hide();
                 setTimeout(function() {
-                    $("#willie-oree-answers").hide()
+                    $("#zdeno-chara-answers").hide()
                     $("#question-goes-here").html(allQuestions[4].question);
                     renderFifthQuestion();
                     $("#questions-form").show();
@@ -475,4 +505,50 @@ $(document).ready(function () {
                 }, 1000 * 3);
             }
     }); 
+
+//Question 5 - When an answer is selected
+    $('#form-id5 input').on("change", function fifthQuestion () {
+        var userAnswer = ($("input[name=answerChoices5]:checked", "#form-id5").val());
+        console.log(userAnswer);
+            if (userAnswer === allQuestions[4].correctAnswer && allowedTime >= 0) {
+                stop();
+                console.log("correct");
+                userScore++;
+                console.log("Current Score: " + userScore);
+                $("bobby-orr-answers").show();
+                $("bobby-orr-correct").show();
+                $("bobby-orr-incorrect").hide();
+                $("bobby-orr-timesup").hide()
+                setTimeout(function() {
+                    $("#bobby-orr-answers").hide();
+                    $("#question-goes-here").hide();
+                    $("#buttons").hide();
+                    $("#time-left-display").hide()
+                    $(".answerChoices5").hide()
+                    renderFinalScore ();              
+                    stop();
+                    $("#final-score").show();
+                }, 1000 * 3);
+            } else if (userAnswer !== allQuestions[4].correctAnswer && allowedTime >= 0) {
+                stop();
+                console.log("Incorrect");
+                incorrectAnswer++
+                console.log("Current Score: " + userScore);
+                console.log("Incorrect Answers: " + incorrectAnswer)
+                $("#bobby-orr-answers").show()
+                $("#bobby-orr-correct").hide()
+                $("#bobby-orr-incorrect").show()
+                $("#bobby-orr-timesup").hide();
+                setTimeout(function() {
+                    $("#bobby-orr-answers").hide();
+                    $("#question-goes-here").hide();
+                    $("#buttons").hide();
+                    $("#time-left-display").hide()
+                    $(".answerChoices5").hide()
+                    renderFinalScore();
+                    stop();
+                    $("#final-score").show()
+                }, 1000 * 3);
+            }
+    });
 })
