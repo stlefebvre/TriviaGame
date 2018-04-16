@@ -14,12 +14,8 @@
 <body>
     <h1>Trivia!</h1>
 
-    <div id="timer-display">15</div>
-
     <div id="buttons">
         <button id="start-game">Start Game!</button>
-        <button id="next">Next Question</button>
-        <button id="get-score">Show Me My Score!</button>
     </div>
 
     <div id="time-left-display"></div>
@@ -28,6 +24,8 @@
         <h2>
             <span id="question-goes-here"></span>
         </h2>
+
+        <!--Answer banks-->
 
         <form id="form-id">
             <input type="radio" class="answerChoices" name="answerChoices" value="1">
@@ -40,12 +38,136 @@
             <span id="answer4"></span>
         </form>
 
+        <form id="form-id2">
+            <input type="radio" class="answerChoices2" name="answerChoices2" value="1">
+            <span id="answer1q2"></span>
+            <input type="radio" class="answerChoices2" name="answerChoices2" value="2">
+            <span id="answer2q2"></span>
+            <input type="radio" class="answerChoices2" name="answerChoices2" value="3">
+            <span id="answer3q2"></span>
+            <input type="radio" class="answerChoices2" name="answerChoices2" value="4">
+            <span id="answer4q2"></span>
+        </form>
+
+        <form id="form-id3">
+            <input type="radio" class="answerChoices3" name="answerChoices3" value="1">
+            <span id="answer1q3"></span>
+            <input type="radio" class="answerChoices3" name="answerChoices3" value="2">
+            <span id="answer2q3"></span>
+            <input type="radio" class="answerChoices3" name="answerChoices3" value="3">
+            <span id="answer3q3"></span>
+            <input type="radio" class="answerChoices3" name="answerChoices3" value="4">
+            <span id="answer4q3"></span>
+        </form>
+
+        <form id="form-id4">
+            <input type="radio" class="answerChoices4" name="answerChoices4" value="1">
+            <span id="answer1q4"></span>
+            <input type="radio" class="answerChoices4" name="answerChoices4" value="2">
+            <span id="answer2q4"></span>
+            <input type="radio" class="answerChoices4" name="answerChoices4" value="3">
+            <span id="answer3q4"></span>
+            <input type="radio" class="answerChoices4" name="answerChoices4" value="4">
+            <span id="answer4q4"></span>
+        </form>
+
+        <form id="form-id5">
+            <input type="radio" class="answerChoices5" name="answerChoices5" value="1">
+            <span class="answerChoices5" id="answer1q5"></span>
+            <input type="radio" class="answerChoices5" name="answerChoices5" value="2">
+            <span class="answerChoices5" id="answer2q5"></span>
+            <input type="radio" class="answerChoices5" name="answerChoices5" value="3">
+            <span class="answerChoices5" id="answer3q5"></span>
+            <input class="answerChoices5" type="radio" class="answerChoices5" name="answerChoices5" value="4">
+            <span class="answerChoices5" id="answer4q5"></span>
+        </form>
+
+        <!--Incorrect/Correct Answer Scenarios-->
+
+
         <div id="year-founded-answers">
             <div id="year-founded-correct">
-                
+                Correct! The Bruins were founded in 1924. They are part of the NHL's Original Six.<br>
+                <img src="assets/images/yearFoundedPicture.jpg" alt="Bruins1924" id="year-founded-image">
+            </div>
+
+            <div id="year-founded-incorrect">
+                Close, but no cigar! The Bruins were founded in 1924.<br>
+                <img src="assets/images/yearFoundedIncorrect.jpe" alt="StuartPunched" id="year-founded-wrong-image">
+            </div>
+
+            <div id="year-founded-timesup">
+                Time's up! The Bruins were founded in 1924.<br>
+                <img src="assets/images/yearFoundedIncorrect.jpe" alt="StuartPunched" id="year-founded-wrong-image">
             </div>
         </div>
-    </div>
+
+        <div id="stanley-cups-answers">
+            <div id="stanley-cups-correct">
+                Correct! To date, the Bruins have won six Stanley Cups (and hopefully seven with the current roster).<br>
+                <img src="assets/images/stanleycupbanners.jpg" alt="stanleycupbanners" id="year-founded-correct-mage">
+            </div>
+
+            <div id="stanley-cups-incorrect">
+                Missed it by that much! The Bruins have won six Stanley Cups.<br>
+                <img src="assets/images/stanleycupbanners.jpg" alt="stanleycupbanners" id="year-founded-correct-mage">
+            </div>
+
+            <div id="stanley-cups-timesup">
+                Time's up! The Bruins have won six Stanley Cups.<br>
+                <img src="assets/images/stanleycupbanners.jpg" alt="stanleycupbanners" id="year-founded-correct-mage">
+            </div>
+        </div>
+
+        <div id="willie-oree-answers">
+            <div id="willie-oree-correct">
+                Correct! Willie O'Ree was the first professional black NHL player!<br>
+                <img src="assets/images/willieoree.jpg" alt="willieoree" id="willie-oree-roster-image">
+            </div>
+
+            <div id="willie-oree-incorrect">
+                Wrong! His name is Willie O'Ree.<br>
+                <img src="assets/images/willieoree.jpg" alt="willieoree" id="willie-oree-roster-image">
+            </div>
+
+            <div id="willie-oree-timesup">
+                And that's the end of the third period! His name is Willie O'Ree.<br>
+                <img src="assets/images/willieoree.jpg" alt="willieoree" id="willie-oree-roster-image">
+            </div>
+        </div>
+
+        <div id="zdeno-chara-answers">
+            <div id="zdeno-chara-correct">
+                Correct! In 2012, Zdeno Chara broke the record for hardest shot at a mind-boggling 108.8 mph.<br>
+            </div>
+
+            <div id="zdeno-chara-incorrect">
+                Almost.. He holds the all-time record at 108.8 mph!
+            </div>
+        
+            <div id="zdeno-chara-timesup">
+                Almost.. He holds the all-time record at 108.8 mph!
+            </div>
+        </div>
+
+        <div id="bobby-orr-answers">
+            <div id="bobby-orr-correct">
+                Correct! He held a +124 in one single season. Impressive, especially for a defenseman!
+            </div>
+
+            <div id="bobby-orr-incorrect">
+                Wrong! He held a steady +124 in one single season.
+            </div>
+
+            <div id="bobby-orr-timesup">
+                Time's up! He held an astounding +124 in one single season.
+            </div>
+        </div>
+
+        <div id="final-score">
+            <span id="correct-answers"> Correct: </span><br>
+            <span id="incorrect-answers"> Incorrect: </span>
+        </div>
 <!--My Javascript-->
 <script src="assets/javascript/app.js"></script>
 </body>
